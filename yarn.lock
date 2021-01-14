@@ -231,7 +231,7 @@
   dependencies:
     tslib "^2.0.0"
 
-"@angular/router@~11.0.1":
+"@angular/router@^11.0.9":
   version "11.0.9"
   resolved "https://registry.yarnpkg.com/@angular/router/-/router-11.0.9.tgz#3798ab2c5a905f73d927d3779942e3a9d2bf5ddc"
   integrity sha512-WopMMhOw4YT8cplDXxxnTS7ByaGop3+frLOkVirY9MKcpcqLwXPblVq4rNKn395XgBVjNK6hmU91RScBnAuVLQ==

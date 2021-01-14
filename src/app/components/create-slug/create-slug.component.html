@@ -1,22 +1,22 @@
 <h2 class="text-xl">Generate your short link</h2>
-<form
-  (ngSubmit)="onSubmit()"
-  [formGroup]="createSlugForm"
-  class="flex flex-col w-1/2 mx-auto"
->
+<form (ngSubmit)="onSubmit()" [formGroup]="createSlugForm" class="flex flex-col w-1/2 mx-auto">
   <input
     type="url"
     name="url"
     id="url"
     formControlName="url"
-    class="h-12 border-0 border-b-2 border-black bg-transparent my-4 hover:border-white transition duration-500"
+    class="h-12 border-0 text-center border-b-2 border-black bg-transparent my-4 hover:border-white transition duration-500"
     [ngClass]="{
       'border-red-500 hover:border-red-500':
         createSlugForm.get('url').touched && createSlugForm.get('url').invalid
     }"
   />
   <span
-    *ngIf="createSlugForm.get('url').dirty && createSlugForm.get('url').invalid"
+    *ngIf="
+      createSlugForm.get('url').dirty &&
+      createSlugForm.get('url').touched &&
+      createSlugForm.get('url').invalid
+    "
     class="text-red-600 italic text-left -mt-4 text-xs"
     >Input is not in correct url format</span
   >
@@ -32,12 +32,7 @@
   >
     Generate
     <span class="h-5 w-5" [ngClass]="{ 'animate-bounce': isLoading }">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -47,4 +42,12 @@
       </svg>
     </span>
   </button>
+  <p
+    class="transition duration-500 transform ease-in-out text-green-500 lowercase mt-8"
+    [ngClass]="{ 'bg-red-500 uppercase': errorMsg }"
+  >
+    <a href="{{ generatedSlug }}" *ngIf="generatedSlug">
+      {{ errorMsg ? errorMsg : generatedSlug }}
+    </a>
+  </p>
 </form>

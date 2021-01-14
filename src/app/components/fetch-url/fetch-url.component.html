@@ -1,1 +1,5 @@
-<p>fetch-url works!</p>
+<div *ngFor="let url of urls">
+  <a href="https://localhost:3000/url/{{ url.slug }}" target="_blank"
+    >https://localhost:3000/url{{ url.slug }}</a
+  >
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainService } from 'src/app/services/main-service.service';
 
@@ -11,6 +11,9 @@ export class CreateSlugComponent implements OnInit {
 
   createSlugForm: FormGroup;
   isLoading: boolean;
+  errorMsg: string;
+  generatedSlug: string;
+
   constructor(private fb: FormBuilder, private mainService: MainService) { }
 
   ngOnInit(): void {
@@ -21,14 +24,14 @@ export class CreateSlugComponent implements OnInit {
 
   onSubmit(): void {
     this.isLoading = true;
-    console.log(
-      this.createSlugForm.value
-    );
     this.mainService.generateSlug(this.createSlugForm.value).subscribe((res: any) => {
+      this.createSlugForm.reset();
       if (res !== 'error') {
-        console.log("successful")
-        console.log(res);
-
+        this.isLoading = false;
+        this.generatedSlug = `https://localhost/${res.data}/`;
+      } else {
+        this.isLoading = false;
+        this.errorMsg = res.msg;
       }
     })
   }
