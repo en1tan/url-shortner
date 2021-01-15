@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MainService } from 'src/app/services/main-service.service';
+import { environment } from 'src/environments/environment';
+import { IUrl } from "../../interfaces/url.interface";
 
 @Component({
   selector: 'app-fetch-url',
@@ -7,7 +9,8 @@ import { MainService } from 'src/app/services/main-service.service';
   styleUrls: ['./fetch-url.component.scss']
 })
 export class FetchUrlComponent implements OnInit {
-  urls: string[] = []
+  urls: IUrl[] = []
+  siteUrl: string = `${environment.baseUrl}`;
 
   constructor(private mainService: MainService) { }
 
