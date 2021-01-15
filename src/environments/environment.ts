@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  baseUrl: 'https://strae-url-server.herokuapp.com' || 'http://localhost:3000'
 };
 
 /*

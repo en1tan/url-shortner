@@ -21,7 +21,6 @@ export class FetchUrlComponent implements OnInit {
   getAllSlugs() {
     this.mainService.getAllSlugs().subscribe((res: any) => {
       this.urls = res.data;
-
     })
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainService } from 'src/app/services/main-service.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-create-slug',
@@ -13,6 +14,7 @@ export class CreateSlugComponent implements OnInit {
   isLoading: boolean;
   errorMsg: string;
   generatedSlug: string;
+  siteUrl: string = environment.baseUrl;
 
   constructor(private fb: FormBuilder, private mainService: MainService) { }
 
@@ -28,7 +30,7 @@ export class CreateSlugComponent implements OnInit {
       this.createSlugForm.reset();
       if (res !== 'error') {
         this.isLoading = false;
-        this.generatedSlug = `https://localhost/${res.data}/`;
+        this.generatedSlug = `${this.siteUrl}/${res.data}/`;
       } else {
         this.isLoading = false;
         this.errorMsg = res.msg;

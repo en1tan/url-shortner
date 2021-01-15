@@ -1,5 +1,7 @@
-<div *ngFor="let url of urls">
-  <a href="http://localhost:3000/{{ url.slug }}" target="_blank" title="{{ url.url }}"
-    >{{ siteUrl }}/{{ urls['slug'] }}/</a
-  >
+<div *ngFor="let url of urls" class="flex flex-row mx-auto px-4">
+  <div class="shadow-lg bg-white border-t-4 border-gray-400 rounded-lg">
+    <a href="{{ siteUrl }}/{{ url.slug }}" target="_blank" title="{{ url.url }}" class="text-sm"
+      >{{ siteUrl }}/{{ url.slug }}/</a
+    >
+  </div>
 </div>
