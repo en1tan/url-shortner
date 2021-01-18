@@ -2,21 +2,16 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="createSlugForm" class="flex flex-col w-1/2 mx-auto">
   <input
     type="url"
-    name="url"
-    id="url"
     formControlName="url"
     class="h-12 border-0 text-center border-b-2 border-black bg-transparent my-4 hover:border-white transition duration-500"
+    autofocus
     [ngClass]="{
       'border-red-500 hover:border-red-500':
         createSlugForm.get('url').touched && createSlugForm.get('url').invalid
     }"
   />
   <span
-    *ngIf="
-      createSlugForm.get('url').dirty &&
-      createSlugForm.get('url').touched &&
-      createSlugForm.get('url').invalid
-    "
+    *ngIf="createSlugForm.get('url').touched && createSlugForm.get('url').invalid"
     class="text-red-600 italic text-left -mt-4 text-xs"
     >Input is not in correct url format</span
   >
